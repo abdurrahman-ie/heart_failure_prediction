@@ -1,12 +1,21 @@
 # import necessary library
-import os
 import sys
+import os
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
 # import custom library
+'''
+Add the path to the src folder to the sys.path list
+This code ("src_path = ...", "sys.path...") adds the 
+path to the src folder (relative to the current script's location)
+to the sys.path list, allowing Python to locate and import modules from the src folder.
+'''
+src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+sys.path.append(src_path)
+
 from src.exception import CustomException
 from src.logger import logging
 
@@ -86,3 +95,19 @@ class DataIngestion:
 
         except CustomException as e:
             raise CustomException(e, sys)
+
+'''
+Below code creates an instance of the "DataIngestion" class and calls the 
+"initiate_data_ingestion()" method to perform the data ingestion process.
+'''
+if __name__ == "__main__": 
+    '''
+    if __name__ == "__main__": checks if the current script is being 
+    executed directly as the main program.
+    When a Python script is executed as the main program, 
+    the value of __name__ is set to "__main__". 
+    If the script is imported as a module in another script, 
+    the value of __name__ will be the name of the module.
+    '''
+    obj = DataIngestion()
+    obj.initiate_data_ingestion()
