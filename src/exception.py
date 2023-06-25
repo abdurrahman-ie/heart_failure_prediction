@@ -1,6 +1,9 @@
 import sys
 import os
 import logging
+
+src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(src_path)
 from src.logger import logging
 
 
